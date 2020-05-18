@@ -4,6 +4,9 @@ Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'easymotion/vim-easymotion'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
 
 Plug 'editorconfig/editorconfig-vim'
 
@@ -13,6 +16,10 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'prabirshrestha/asyncomplete-neosnippet.vim'
+
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'mattn/emmet-vim'
 
@@ -21,8 +28,34 @@ Plug 'cohama/lexima.vim'
 call plug#end()
 filetype indent plugin on
 
-" Plugin settings
+" NERDTree Settings
 let g:NERDTreeWinPos="bottom"
+
+" Airline Settings
+let g:airline_powerline_fonts=1
+let g:airline_theme='dark'
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+if !exists('g:airline_symbols')
+	let g:airline_symbols={}
+else
+	let g:airline_symbols.branch = ''
+	let g:airline_symbols.readonly = ''
+	let g:airline_symbols.linenr = ''
+	let g:airline_symbols.notexists = '∄'
+endif
+let g:airline_mode_map={
+\		'n': 'N',
+\		'i': 'I',
+\		'R': 'R',
+\		'c': 'C',
+\		'v': 'V',
+\		'V': 'L',
+\		'': 'B',
+\	}
 
 " color scheme
 syntax on
@@ -60,6 +93,8 @@ set wildmenu
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set backspace=indent,eol,start
+
+set ttimeoutlen=10
 " 
 nnoremap j gj
 nnoremap k gk
@@ -106,6 +141,7 @@ nnoremap <Leader>n :LspRename<CR>
 nmap f <Plug>(easymotion-f2)
 nmap F <Plug>(easymotion-F2)
 nmap <Leader><Leader>w <Plug>(easymotion-bd-w)
+" nnoremap <Leader><Leader>/ /
 map / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map n <Plug>(easymotion-next)
@@ -114,6 +150,12 @@ map <Leader>l <Plug>(easymotion-lineforward)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
+
+" Snippet Settings
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
+let g:neosnippet#snippets_directory='${VDOTDIR}/plugged/neosnippet-snippets/neosnippets/,${VDOTDIR}/snippets'
 
 " Emmet Settings
 let g:user_emmet_leader_key = '<C-E>'

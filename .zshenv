@@ -1,4 +1,5 @@
 export ASTERISK="/home/asterisk"
 export ZDOTDIR="${HOME}"
-export VIMRC="${HOME}/.vimrc"
 export ZSHRC="${HOME}/.zshrc"
+export VIMRC="${HOME}/.vimrc"
+export VDOTDIR="${HOME}/.vim"
