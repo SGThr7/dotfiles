@@ -1,0 +1,1 @@
+/home/asterisk/dotfiles/.vim
