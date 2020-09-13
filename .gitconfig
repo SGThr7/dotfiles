@@ -1,2 +1,4 @@
 [core]
 	editor = vim
+[alias]
+	unstage = reset HEAD

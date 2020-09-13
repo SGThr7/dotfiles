@@ -6,7 +6,14 @@ alias relogin="exec $SHELL -l"
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias grep='grep --color=auto'
 alias kill-mosh='kill `pidof mosh-server`'
+alias ojt="oj t -d \"./tests/\""
+alias ojtswift="ojt -c \"swift ./main.swift\""
+alias ojtjs="ojt -c \"node ./main.js\""
+
+# function
+gles () { grep --directories=skip --line-number --color=always $@ | less -R }
 
 # color setting
 autoload -Uz colors
@@ -25,13 +32,6 @@ autoload -Uz select-word-style
 select-word-style default
 zstyle ':zle:*' word-chars " /=;@:{},|"
 zstyle ':zle:*' word-style unspecified
-
-# nvm setting
-export NVM_DIR="$HOME/.nvm"
-# This loads nvm
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-# This loads nvm bash_completion
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 ########################################
 # suggestion
@@ -83,7 +83,7 @@ setopt interactive_comments
 # ommit 'cd'
 setopt auto_cd
 # auto ls
-function chpwd() { ls }
+function chpwd() { ls -a }
 
 # auto pushd
 setopt auto_pushd
@@ -141,3 +141,13 @@ function _update_vcs_info_msg() {
 	RPROMPT="${vcs_info_msg_0_}"
 }
 add-zsh-hook precmd _update_vcs_info_msg
+
+# opam configuration
+test -r /home/rainbow/.opam/opam-init/init.zsh && . /home/rainbow/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# nvm setting
+export NVM_DIR="$HOME/.nvm"
+# This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+# This loads nvm bash_completion
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"

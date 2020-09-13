@@ -1,0 +1,191 @@
+snippet BIT
+    use num_traits::{NumOps, Zero};
+    pub struct BIT<T> {
+        pub(crate) tree: Vec<T>,
+    }
+    impl<T> BIT<T>
+    where
+        T: std::marker::Copy + NumOps + Zero,
+    {
+        pub fn new(data: &[T]) -> Self {
+            let size = data.len();
+            let mut bit = BIT {
+                tree: vec![T::zero(); size],
+            };
+            for (i, &x) in data.iter().enumerate() {
+                bit.add(i, x);
+            }
+            bit
+        }
+        pub fn size(&self) -> usize {
+            self.tree.len()
+        }
+        pub fn add(&mut self, i: usize, x: T) {
+            let size = self.size();
+            let mut i = i;
+            while i < size {
+                self.tree[i] = self.tree[i] + x;
+                i += (i + 1) & (!(i + 1)).wrapping_add(1);
+            }
+        }
+        pub fn sub(&mut self, i: usize, x: T) {
+            let size = self.size();
+            let mut i = i;
+            while i < size {
+                self.tree[i] = self.tree[i] - x;
+                i += (i + 1) & (!(i + 1)).wrapping_add(1);
+            }
+        }
+        pub fn sum(&self, i: usize) -> T {
+            let mut res = T::zero();
+            let mut i = i as isize;
+            while i >= 0 {
+                res = res + self.tree[i as usize];
+                i -= (i + 1) & -(i + 1);
+            }
+            res
+        }
+    }
+
+snippet BITRAQ
+    use num_traits::{NumOps, Zero};
+    pub struct BIT<T> {
+        pub(crate) tree: Vec<T>,
+    }
+    impl<T> BIT<T>
+    where
+        T: std::marker::Copy + NumOps + Zero,
+    {
+        pub fn new(data: &[T]) -> Self {
+            let size = data.len();
+            let mut bit = BIT {
+                tree: vec![T::zero(); size],
+            };
+            for (i, &x) in data.iter().enumerate() {
+                bit.add(i, x);
+            }
+            bit
+        }
+        pub fn size(&self) -> usize {
+            self.tree.len()
+        }
+        pub fn add(&mut self, i: usize, x: T) {
+            let size = self.size();
+            let mut i = i;
+            while i < size {
+                self.tree[i] = self.tree[i] + x;
+                i += (i + 1) & (!(i + 1)).wrapping_add(1);
+            }
+        }
+        pub fn sub(&mut self, i: usize, x: T) {
+            let size = self.size();
+            let mut i = i;
+            while i < size {
+                self.tree[i] = self.tree[i] - x;
+                i += (i + 1) & (!(i + 1)).wrapping_add(1);
+            }
+        }
+        pub fn sum(&self, i: usize) -> T {
+            let mut res = T::zero();
+            let mut i = i as isize;
+            while i >= 0 {
+                res = res + self.tree[i as usize];
+                i -= (i + 1) & -(i + 1);
+            }
+            res
+        }
+    }
+    use num_traits::{AsPrimitive, FromPrimitive, NumOps, One, Zero};
+    pub struct BITRAQ<T> {
+        bit: BIT<T>,
+        bit_raq: BIT<T>,
+    }
+    impl<T> BITRAQ<T>
+    where
+        T: std::marker::Copy + NumOps + Zero + One + AsPrimitive<isize> + FromPrimitive,
+    {
+        pub fn new(bit: BIT<T>) -> Self {
+            let size = bit.size();
+            BITRAQ {
+                bit: bit,
+                bit_raq: BIT::new(&vec![T::zero(); size]),
+            }
+        }
+        pub fn add_range(&mut self, range: (usize, usize), x: T) {
+            let left = T::from_usize(range.0).unwrap();
+            let right = T::from_usize(range.1).unwrap();
+            let one = T::one();
+            let xl = x * (left - one);
+            let xr = x * right;
+            self.bit.sub(range.0, xl);
+            self.bit.add(range.1 + 1, xr);
+            self.bit_raq.add(range.0, x);
+            self.bit_raq.sub(range.1 + 1, x);
+        }
+        pub fn sub_range(&mut self, range: (usize, usize), x: T) {
+            let left = T::from_usize(range.0).unwrap();
+            let right = T::from_usize(range.1).unwrap();
+            let one = T::one();
+            let xl = x * (left - one);
+            let xr = x * right;
+            self.bit.add(range.0, xl);
+            self.bit.sub(range.1 + 1, xr);
+            self.bit_raq.sub(range.0, x);
+            self.bit_raq.add(range.1 + 1, x);
+        }
+        pub fn sum(&self, i: usize) -> T {
+            let it = T::from_usize(i).unwrap();
+            self.bit.sum(i) + self.bit_raq.sum(i) * it
+        }
+    }
+    impl<T> BIT<T>
+    where
+        T: std::marker::Copy + NumOps + Zero + One + AsPrimitive<isize> + FromPrimitive,
+    {
+        pub fn raq(self, range: (usize, usize), x: T) -> BITRAQ<T> {
+            let mut bit_raq = BITRAQ::new(self);
+            bit_raq.add_range(range, x);
+            bit_raq
+        }
+        pub fn rsq(self, range: (usize, usize), x: T) -> BITRAQ<T> {
+            let mut bit_raq = BITRAQ::new(self);
+            bit_raq.sub_range(range, x);
+            bit_raq
+        }
+    }
+
+snippet gcd
+    pub fn gcd(a: usize, b: usize) -> usize {
+        fn _gcd(a: usize, b: usize) -> usize {
+            if b == 0 {
+                a
+            } else {
+                _gcd(b, a % b)
+            }
+        }
+        if a >= b {
+            _gcd(a, b)
+        } else {
+            _gcd(b, a)
+        }
+    }
+
+snippet lcm
+    pub fn gcd(a: usize, b: usize) -> usize {
+        fn _gcd(a: usize, b: usize) -> usize {
+            if b == 0 {
+                a
+            } else {
+                _gcd(b, a % b)
+            }
+        }
+        if a >= b {
+            _gcd(a, b)
+        } else {
+            _gcd(b, a)
+        }
+    }
+    pub fn lcm(a: usize, b: usize) -> usize {
+        a / gcd(a, b) * b
+    }
+

@@ -1,0 +1,20 @@
+pane	0	1	:god	0	:	0	:/home/rainbow/school/5JEarly/Infomation_Processing/Lec7/src	0	zsh	:
+pane	0	1	:god	0	:	1	:/home/rainbow/school/5JEarly/Infomation_Processing/Lec7	0	zsh	:
+pane	0	1	:god	0	:	2	:/home/rainbow/school/5JEarly/Infomation_Processing/Lec7	1	zsh	:
+pane	0	2	:thesis	0	:	0	:/home/rainbow/school/senior_thesis	1	zsh	:
+pane	0	3	:rustudy	0	:	0	:/home/rainbow/develop/study/rust/src	1	vim	:vim main.rs
+pane	0	3	:rustudy	0	:	1	:/home/rainbow/develop/study/rust	0	zsh	:
+pane	0	4	:atcoder	0	:	0	:/home/rainbow/atcoder/abc175/src/bin	1	vim	:vim e.rs
+pane	0	4	:atcoder	0	:	1	:/home/rainbow/atcoder/abc175	0	zsh	:
+pane	0	5	:tokei	0	:-	0	:/home/rainbow/school/5JEarly/Statistics_Literacy/Lec2	1	vim	:vim 5J17_Lec2.tex
+pane	0	5	:tokei	0	:-	1	:/home/rainbow/school/5JEarly/Statistics_Literacy/Lec2	0	zsh	:
+pane	0	5	:tokei	0	:-	2	:/home/rainbow/school/5JEarly/Statistics_Literacy/Lec2/src	0	zsh	:
+pane	0	6	:NLS	1	:*	0	:/home/rainbow/develop/NicoLiveScheduler	0	vim	:vim src/LiveSearchAPI.ts
+pane	0	6	:NLS	1	:*	1	:/home/rainbow/develop/NicoLiveScheduler	1	zsh	:
+window	0	1	0	:	80be,65x41,0,0[65x30,0,0,1,65x10,0,31{32x10,0,31,2,32x10,33,31,3}]
+window	0	2	0	:	ac61,65x41,0,0,4
+window	0	3	0	:	a3c8,89x41,0,0[89x30,0,0,5,89x10,0,31,6]
+window	0	4	0	:	ee0b,132x41,0,0[132x31,0,0,19,132x9,0,32,20]
+window	0	5	0	:-	1735,132x41,0,0[132x30,0,0,9,132x10,0,31{66x10,0,31,10,65x10,67,31,11}]
+window	0	6	1	:*	f78a,65x41,0,0[65x22,0,0,21,65x18,0,23,22]
+state	0	

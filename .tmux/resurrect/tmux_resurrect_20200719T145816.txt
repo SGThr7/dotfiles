@@ -1,0 +1,17 @@
+pane	0	1	:god	1	:*	0	:/home/rainbow/school/5JEarly/Infomation_Processing/Lec7/src	0	vim	:/usr/bin/zsh -l
+pane	0	1	:god	1	:*	1	:/home/rainbow/school/5JEarly/Infomation_Processing/Lec7	0	node	:node /home/rainbow/.nvm/versions/node/v14.3.0/bin/llp
+pane	0	1	:god	1	:*	2	:/home/rainbow/school/5JEarly/Infomation_Processing/Lec7	1	zsh	:
+pane	0	2	:thesis	0	:-	0	:/home/rainbow/school/senior_thesis	1	zsh	:
+pane	0	3	:rustudy	0	:	0	:/home/rainbow/develop/study/rust/src	1	vim	:vim main.rs
+pane	0	3	:rustudy	0	:	1	:/home/rainbow/develop/study/rust	0	zsh	:
+pane	0	4	:atcoder	0	:	0	:/home/rainbow/atcoder/aising2020/d	1	vim	:vim main.swift
+pane	0	4	:atcoder	0	:	1	:/home/rainbow/atcoder/aising2020/d	0	zsh	:
+pane	0	5	:tokei	0	:	0	:/home/rainbow/school/5JEarly/Statistics_Literacy/Lec2	1	vim	:vim 5J17_Lec2.tex
+pane	0	5	:tokei	0	:	1	:/home/rainbow/school/5JEarly/Statistics_Literacy/Lec2	0	zsh	:
+pane	0	5	:tokei	0	:	2	:/home/rainbow/school/5JEarly/Statistics_Literacy/Lec2/src	0	zsh	:
+window	0	1	1	:*	1967,65x41,0,0[65x30,0,0,0,65x10,0,31{32x10,0,31,18,32x10,33,31,30}]
+window	0	2	0	:-	57a8,89x41,0,0,19
+window	0	3	0	:	9593,65x41,0,0[65x30,0,0,34,65x10,0,31,35]
+window	0	4	0	:	754c,132x41,0,0[132x30,0,0,36,132x10,0,31,43]
+window	0	5	0	:	ee98,89x41,0,0[89x30,0,0,44,89x10,0,31{44x10,0,31,47,44x10,45,31,48}]
+state	0	
