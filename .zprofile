@@ -1,0 +1,6 @@
+export PATH="/usr/local/opt/icu4c/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="${HOME}/.opam/default/bin:$PATH"
+export PATH="${HOME}/.local/bin:$PATH"
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
