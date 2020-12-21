@@ -17,7 +17,11 @@ dotfiles=(${dotfiles[@]})
 
 # Make symbolic link to $HOME
 for file in ${dotfiles[@]/$ignorefiles}; do
-	ln -is $__DIRNAME/$file $HOME/$file
+	if [[ -d $file ]]; then
+		ln -vsF $__DIRNAME/$file/ $HOME/$file
+	elif [[ -f $file ]]; then
+		ln -vsf $__DIRNAME/$file $HOME/$file
+	fi
 done
 
 echo "Setup have been finished."
