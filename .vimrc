@@ -36,6 +36,10 @@ Plug 'cohama/lexima.vim'
 call plug#end()
 filetype indent plugin on
 
+" On Mac
+" yank to clipboard
+set clipboard+=unnamed
+
 " NERDTree Settings
 let g:NERDTreeWinPos="bottom"
 
@@ -47,17 +51,17 @@ let g:NERDDefaultAlign='left'
 let g:neosnippet#snippets_directory='$HOME/.vim/bundle/kuin_vim/snippets'
 
 " Airline Settings
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=0
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled=1
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
 nmap <C-q> :bdelete<CR>
 " powerline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
 if !exists('g:airline_symbols')
 	let g:airline_symbols={}
 else
